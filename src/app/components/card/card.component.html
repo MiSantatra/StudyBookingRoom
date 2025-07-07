@@ -1,0 +1,37 @@
+<div class="bg-white shadow-xl rounded-2xl p-6 border border-gray-100 transition hover:shadow-2xl">
+  <div class="flex items-center justify-between mb-4" (click)="onCardClick()">
+    <h3 class="text-2xl font-bold text-gray-800">{{ room.name }}</h3>
+    <span
+      [ngClass]="room.status === 'Available' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'"
+      class="text-sm font-medium px-3 py-1 rounded-full"
+    >
+      {{ room.status }}
+    </span>
+  </div>
+
+  <div class="space-y-2 text-gray-600 text-sm" (click)="onCardClick()">
+    <p><span class="font-medium">Location :</span> {{ room.location }}</p>
+    <p><span class="font-medium">Capacity :</span> {{ room.capacity }}</p>
+    <p><span class="font-medium">Equipment :</span> {{ room.equipment.join(', ') }}</p>
+  </div>
+
+<div class="mt-6 flex gap-2">
+  <button
+    class="flex-1 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold py-2.5 rounded-xl
+           transition disabled:opacity-50 disabled:cursor-not-allowed"
+    [disabled]="room.creneaux.length === 0 || room.status === 'Maintenance'"
+    (click)="chooseSlot.emit(room)">
+    Choose a timeslot
+  </button>
+
+  <button
+  class="flex-1 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600
+         text-white text-sm font-semibold py-2.5 rounded-xl transition disabled:opacity-50 disabled:cursor-not-allowed"
+  (click)="onCardClick()"
+>
+  View details
+</button>
+
+</div>
+
+</div>

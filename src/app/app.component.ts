@@ -1,12 +1,19 @@
+// src/app/app.component.ts
 import { Component } from '@angular/core';
+import { SearchService } from './services/search.service';
+import { NavbarComponent } from './components/navbar/navbar.component';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  standalone: true,
+  imports: [NavbarComponent, RouterOutlet],
+  templateUrl: './app.component.html'
 })
 export class AppComponent {
-  title = 'study-room-booking';
+  constructor(private searchService: SearchService) {}
+
+  updateSearchTerm(term: string) {
+    this.searchService.setSearchTerm(term);
+  }
 }

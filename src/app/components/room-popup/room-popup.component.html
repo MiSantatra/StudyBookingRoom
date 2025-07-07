@@ -1,0 +1,26 @@
+<div class="p-6 bg-white rounded-2xl shadow-lg max-w-md w-full">
+  <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center gap-2">
+    <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" stroke-width="2" 
+         viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M8 7V3M16 7V3M3 11h18M5 21h14a2 2 0 0 0 2-2V7H3v12a2 2 0 0 0 2 2z" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+     Book room <span class="text-blue-600">{{ room.name }}</span>
+  </h3>
+  <div class="mb-4">
+    <strong>Available time slots :</strong>
+    <div *ngFor="let creneau of room.creneaux" class="mt-2 flex items-center gap-2 text-sm">
+      <input type="checkbox" [value]="creneau" (change)="onCheckboxChange($event, creneau)">
+      <label>{{ creneau }}</label>
+    </div>
+  </div>
+
+  <div class="flex justify-end gap-3 mt-6">
+    <button (click)="onClose()" class="px-4 py-2 rounded-xl border border-gray-300 text-gray-700 hover:bg-gray-100 transition">
+      Close
+    </button>
+
+    <button (click)="addToCart()" class="px-4 py-2 rounded-xl bg-blue-600 text-white hover:bg-blue-700 transition">
+      Add to cart
+    </button>
+  </div>
+</div>

@@ -1,0 +1,34 @@
+<div class="p-6 bg-white min-h-screen font-sans">
+  <h2 class="text-3xl font-bold text-blue-800 mb-8 text-center">Booking Summary</h2>
+
+  <div *ngIf="reservations.length === 0" class="text-gray-600 text-center text-lg">
+    No bookings at the moment.
+  </div>
+
+  <div
+    *ngFor="let res of reservations; let i = index"
+    class="bg-white border border-blue-100 rounded-2xl p-6 mb-6 shadow-md hover:shadow-lg transition-all duration-300"
+  >
+    <div class="flex flex-col md:flex-row gap-6 items-center md:items-start">
+      <img
+        [src]="res.imageUrl"
+        class="w-full md:w-52 h-36 object-cover rounded-xl border border-gray-200"
+        alt="Salle"
+      />
+
+      <div class="flex-1 text-gray-800 space-y-2">
+        <h3 class="text-2xl font-semibold text-blue-700">{{ res.roomName }}</h3>
+        <p><span class="font-medium text-blue-600">Time Slots :</span> {{ res.creneaux.join(', ') }}</p>
+        <p><span class="font-medium text-blue-600">Statut :</span> {{ res.status }}</p>
+        <p><span class="font-medium text-blue-600">Date :</span> {{ res.date }}</p>
+      </div>
+
+      <button
+        (click)="annulerReservation(i)"
+        class="bg-red-500 text-white px-5 py-2 rounded-full hover:bg-red-600 transition-colors duration-200"
+      >
+        Cancel
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+<!-- src/app/components/navbar/navbar.component.html -->
+<nav class="flex justify-between items-center bg-white shadow px-6 py-4">
+  <div class="font-bold text-xl">StudyRoom Booking</div>
+  <div class="space-x-4 flex items-center">
+  <input
+    type="text"
+    class="p-2 rounded text-black"
+    placeholder="Search a room..."
+    (input)="onSearch($event)"
+  />
+
+
+    <a routerLink="/" class="hover:underline cursor-pointer">Rooms</a>
+<a routerLink="/summary" class="hover:underline cursor-pointer">Summary</a>
+
+  </div>
+</nav>

@@ -1,0 +1,52 @@
+<div class="fixed inset-0 bg-black bg-opacity-40 backdrop-blur-sm flex items-center justify-center z-50">
+  <div class="bg-white rounded-2xl shadow-2xl p-6 relative w-full max-w-lg animate-fade-in">
+    <!-- Bouton de fermeture -->
+    <button
+      class="absolute top-3 right-3 text-gray-500 hover:text-red-500 transition text-lg"
+      (click)="onClose()"
+      aria-label="Fermer"
+    >
+      ✖
+    </button>
+
+    <h2 class="text-2xl font-semibold text-gray-800 mb-4">{{ room.name }}</h2>
+
+    <img
+      [src]="room.imageUrl"
+      alt="Salle"
+      class="w-full h-48 object-cover rounded-xl mb-4 border border-gray-200"
+    />
+
+    <div class="space-y-2 text-gray-700 text-sm">
+      <p><strong>Capacity :</strong> {{ room.capacity }} personnes</p>
+      <p><strong>Equipments :</strong> {{ room.equipment.join(', ') }}</p>
+      <p><strong>Floor :</strong> {{ room.location }}</p>
+    </div>
+
+    <!-- Créneaux disponibles -->
+    <div class="mt-4">
+      <strong class="text-gray-800 text-sm">Available time slots :</strong>
+      <div class="grid grid-cols-2 gap-2 mt-2">
+        <label
+          *ngFor="let creneau of room.creneaux"
+          class="flex items-center space-x-2 text-sm text-gray-600"
+        >
+          <input
+            type="checkbox"
+            [value]="creneau"
+            class="accent-blue-600"
+          />
+          <span>{{ creneau }}</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Bouton d'action -->
+    <button
+      class="mt-6 w-full py-2 px-4 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition font-medium"
+      (click)="addToCart()"
+    >
+      Book
+    </button>
+  </div>
+</div>
